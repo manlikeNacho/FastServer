@@ -1,3 +1,4 @@
+import os
 from app.models import Base
 from logging.config import fileConfig
 
@@ -25,6 +26,8 @@ target_metadata = Base.metadata
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
+DATABASE_URL = os.getenv("DATABASE_URL")
+config.set_main_option("sqlalchemy.url", DATABASE_URL)
 
 
 def run_migrations_offline() -> None:

@@ -3,13 +3,14 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from app.config import settings
 
-SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:1234@localhost/fast_db'
+SQLALCHEMY_DATABASE_URL = settings.DATABASE_URL
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
+print('url', SQLALCHEMY_DATABASE_URL)
 
 
 def get_db():
